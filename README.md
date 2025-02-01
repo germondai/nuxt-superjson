@@ -18,6 +18,16 @@ To simplify this process, we introduce **utilities** that handles **SuperJSON se
 
 Additionally, we've created **`$superFetch`** and **`useSuperFetch`** to handle **fetch deserialization** seamlessly. This keeps your code **D-R-Y** and **effortless**, allowing you to focus on building features instead of dealing with data inconsistencies.
 
+## Quick Setup
+
+Install the module to your Nuxt application with one command:
+
+```bash
+npx nuxi module add nuxt-superjson
+```
+
+That's it! You can now use **SuperJSON** in your Nuxt app ✨
+
 ## Implementation
 
 ### Serialize API responses with `toSuperJSON`
@@ -48,23 +58,29 @@ const data = await $superFetch('/api')
 </script>
 ```
 
-### Custom deserialize logic using `fromSuperJSON`
+## Recipes
+
+### Custom $fetch with `fromSuperJSON` 
 
 ```ts
-const data = await $fetch('/api')
+const superApiFetch = $fetch.create({
+  parseResponse: fromSuperJSON,
+  headers: { Authorization: `Bearer ${token}` }
+})
 
-const deserialized = fromSuperJSON(data)
+const data = await superApiFetch('/api')
 ```
 
-## Quick Setup
+### Custom useFetch with `fromSuperJSON` 
 
-Install the module to your Nuxt application with one command:
+```ts
+const useSuperApiFetch: typeof useFetch = <T>(
+  req: Parameters<typeof useFetch<T>>[0],
+  opts: Parameters<typeof useFetch<T>>[1],
+) => useFetch(req, { ...opts, $fetch: superApiFetch })
 
-```bash
-npx nuxi module add nuxt-superjson
+const { data } = await useSuperApiFetch('/api')
 ```
-
-That's it! You can now use **SuperJSON** in your Nuxt app ✨
 
 ## Contribution
 
