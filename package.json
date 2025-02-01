@@ -1,7 +1,7 @@
 {
   "name": "nuxt-superjson",
   "version": "0.0.1",
-  "description": "Nuxt SuperJSON tRPC-like plugin",
+  "description": "Nuxt tRPC-like API integration with SuperJSON support",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/germondai/nuxt-superjson.git"
