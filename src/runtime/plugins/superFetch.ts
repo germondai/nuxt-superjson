@@ -1,5 +1,5 @@
+import { defineNuxtPlugin } from 'nuxt/app'
 import { superFetch } from '../utils/superFetch'
-import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin({
   name: 'superFetch',

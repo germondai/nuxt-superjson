@@ -1,5 +1,5 @@
 import { deserialize } from 'superjson'
-import { createError } from '#app'
+import { createError } from 'nuxt/app'
 
 export const fromSuperJSON = <T>(data: T) => {
   try {

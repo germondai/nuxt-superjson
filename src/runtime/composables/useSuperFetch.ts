@@ -1,5 +1,5 @@
+import { useFetch } from 'nuxt/app'
 import { superFetch } from '../utils/superFetch'
-import { useFetch } from '#app'
 
 export const useSuperFetch: typeof useFetch = <T>(
   req: Parameters<typeof useFetch<T>>[0],
