@@ -14,15 +14,22 @@
     <br>
     isDate: {{ toSuperJSON.date instanceof Date }}
     <br><br>
-    superJSON: {{ superJSON }}
+    useSuperFetch: {{ useSuperFetchData }}
     <br>
-    isDate: {{ superJSON.date instanceof Date }}
+    isDate: {{ useSuperFetchData.date instanceof Date }}
+    <br><br>
+    superFetch: {{ superFetchData }}
+    <br>
+    isDate: {{ superFetchData.date instanceof Date }}
   </div>
 </template>
 
 <script lang="ts" setup>
+const { $superFetch } = useNuxtApp()
+
 const { data: api } = await useFetch('/api')
 const { data: toJSON } = await useFetch('/api/toJSON')
 const { data: toSuperJSON } = await useFetch('/api/toSuperJSON')
-const { data: superJSON } = await useSuperFetch('/api/toSuperJSON')
+const { data: useSuperFetchData } = await useSuperFetch('/api/toSuperJSON')
+const superFetchData = await $superFetch('/api/toSuperJSON')
 </script>
